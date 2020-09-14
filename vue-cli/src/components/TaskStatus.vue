@@ -36,16 +36,16 @@
                             class="form-control"
                             v-model="Actiondata.Description">
             </div>
-        </div>
-      </div>
-            
-            <div class="row">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+             <div class="row">
+                <div class="col-xs-12">
                     <button
                             class="btn btn-primary" @click="submit">Submit!
                     </button>
                 </div>
             </div>
+        </div>
+      </div>
+            
         </div>
         <hr>
         </div>
@@ -65,34 +65,36 @@
                                 <th>Description</th>
                                 <th>Action</th>
                             </tr>
-                            <tr v-for="(showValue, index) in show_value" :key="index">
+                            <tr v-for="(showValue, index) in show_value" :key="index" class="display">
                                 <!-- <td><div>{{ index + 1 }}</div></td> -->
 
                                 <td> 
                                     <div v-if="!isEditing">{{ showValue.id }}</div>
-                                    <div><input v-model="Actiondata.ID" v-if="isEditing" :key="index"></div>
+                                    <div><input type="text" v-model="showValue.id" v-show="showValue.id" v-if="isEditing"></div>
                                 </td>
 
                                 <td>
                                     <div v-if="!isEditing">{{ showValue.Name }}</div>
-                                    <div><input v-model="Actiondata.TaskName" v-if="isEditing" :key="index"></div>
+                                    <div><input type="text" v-model="showValue.Name" v-show="showValue.Name" v-if="isEditing"></div>
                                 </td>
                                 
                                 <td>
                                     <div v-if="!isEditing">{{ showValue.Message }}</div>
-                                    <div><input v-model="Actiondata.Description" v-if="isEditing" :key="index"></div>
+                                    <div><input type="text" v-model="showValue.Message" v-show="showValue.Message" v-if="isEditing"></div>
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary" @click="isEditing = !isEditing; submit" :id="showValue.id">
-                                    {{ isEditing ? 'Save' : 'Edit' }} {{ index }}
+                                    <button class="btn btn-primary" @click="isEditing = !isEditing;"
+                                     :id="showValue.id"
+                                     v-show="showValue.id">
+                                    {{ isEditing ? 'Save' : 'Edit' }}
                                     </button>
-                                    <button class="btn btn-primary" @click="onDelete(showValue.id)">
+                                    <!-- <button class="btn btn-primary" @click="onDelete(showValue.id)">
                                     Delete
-                                    </button>
+                                    </button> -->
                                 </td>
                             </tr>
                         </table>
-                     <button class="ctr1" @click="show">Add Action </button>   
+                     <!-- <button class="ctr1" @click="show">Add Action </button>    -->
                     </div>
                 </div>
             </div>
@@ -135,10 +137,14 @@
                
                this.$store.dispatch('Save_Data',values)
 
-            },
-            onDelete(id) {
-                this.$store.state.TaskData = this.$store.state.TaskData.filter(remove =>  remove.ID!= id)
             }
+            // edit(id){
+            //     var x = id-----document.getElementsByClassName('display')
+            //     x[id].style.display = none
+            // },
+            // onDelete(id) {
+            //     this.$store.state.TaskData = this.$store.state.TaskData.filter(remove =>  remove.ID!= id)
+            // }
         },
 
         computed: {
