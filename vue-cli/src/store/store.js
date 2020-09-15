@@ -13,11 +13,18 @@ export const store = new Vuex.Store({
 
     mutations:{
         SaveData: (state,values) =>{
+            const records = state.TaskData.find(element => element.id == values.ID);
+            console.log(records)
+            if(records){
+                records.Name = values.TaskName,
+                records.Message = values.Description
+            }else {
           state.TaskData.push({
             id: values.ID,
             Name: values.TaskName,
             Message : values.Description
         }); 
+      }
     },
     SaveEmpData : (state,values)=>{
         state.EmpData.push({
@@ -32,12 +39,12 @@ export const store = new Vuex.Store({
     actions: {
         Save_Data : ({commit},values)=> {
              commit('SaveData',values) 
-             console.log(values)
+            //  console.log(values)
         },
 
         Save_Emp_Data : ({commit},values)=>{
              commit('SaveEmpData',values)
-             console.log(values)
+            //  console.log(values)
 
         }
     },

@@ -142,7 +142,7 @@
                     emp_save_Age : this.Employeedata.emp_Age,
                     emp_save_TaskNames: this.Employeedata.emp_TaskNames
                 }
-                 console.log(values)
+                //  console.log(values)
                
                this.$store.dispatch('Save_Emp_Data',values)
 

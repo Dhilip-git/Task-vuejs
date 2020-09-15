@@ -16,7 +16,6 @@
                         <label for="email">ID</label>
                         <input
                                 type="text"
-                                id="ID"
                                 class="form-control"
                                 v-model="Actiondata.ID">
                     </div>
@@ -24,15 +23,13 @@
                         <label for="password">TaskName</label>
                         <input
                                 type="text"
-                                id="Description"
                                 class="form-control"
                                 v-model="Actiondata.TaskName">
                     </div>
                     <div class="form-group" >
                     <label for="message">Description</label><br>
                     <input
-                            id="message"
-                            rows="5"
+                            type="text"
                             class="form-control"
                             v-model="Actiondata.Description">
             </div>
@@ -69,24 +66,23 @@
                                 <!-- <td><div>{{ index + 1 }}</div></td> -->
 
                                 <td> 
-                                    <div v-if="!isEditing">{{ showValue.id }}</div>
-                                    <div><input type="text" v-model="showValue.id" v-show="showValue.id" v-if="isEditing"></div>
+                                    <div>{{ showValue.id }}</div>
+                                    <!--<div><input type="text" v-model="showValue.id" v-show="showValue.id" v-if="isEditing"></div>-->
                                 </td>
 
                                 <td>
-                                    <div v-if="!isEditing">{{ showValue.Name }}</div>
-                                    <div><input type="text" v-model="showValue.Name" v-show="showValue.Name" v-if="isEditing"></div>
+                                    <div>{{ showValue.Name }}</div>
+                                    <!--<div><input type="text" v-model="showValue.Name" v-show="showValue.Name" v-if="isEditing"></div>-->
                                 </td>
                                 
                                 <td>
-                                    <div v-if="!isEditing">{{ showValue.Message }}</div>
-                                    <div><input type="text" v-model="showValue.Message" v-show="showValue.Message" v-if="isEditing"></div>
+                                    <div>{{ showValue.Message }}</div>
+                                    <!--<div><input type="text" v-model="showValue.Message" v-show="showValue.Message" v-if="isEditing"></div>-->
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary" @click="isEditing = !isEditing;"
-                                     :id="showValue.id"
+                                    <button class="btn btn-primary" @click="edit(showValue.id,showValue.Name,showValue.Message)"
                                      v-show="showValue.id">
-                                    {{ isEditing ? 'Save' : 'Edit' }}
+                                    Edit
                                     </button>
                                     <!-- <button class="btn btn-primary" @click="onDelete(showValue.id)">
                                     Delete
@@ -133,18 +129,24 @@
                     TaskName : this.Actiondata.TaskName,
                     Description : this.Actiondata.Description
                 }
-                 console.log(values)
+                //  console.log(values)
                
                this.$store.dispatch('Save_Data',values)
 
+            },
+            edit(id,name,msg){
+            //    this.isEditing = (!isEditing)
+                this.switched = true
+                this.Datas = false
+                // console.log('inside edit' + id + name + msg)
+                this.Actiondata.ID = id,
+                this.Actiondata.TaskName = name,
+                this.Actiondata.Description = msg
+
+            },
+            onDelete(id) {
+                this.$store.state.TaskData = this.$store.state.TaskData.filter(remove =>  remove.ID!= id)
             }
-            // edit(id){
-            //     var x = id-----document.getElementsByClassName('display')
-            //     x[id].style.display = none
-            // },
-            // onDelete(id) {
-            //     this.$store.state.TaskData = this.$store.state.TaskData.filter(remove =>  remove.ID!= id)
-            // }
         },
 
         computed: {
