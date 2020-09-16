@@ -36,10 +36,14 @@
              <div class="row">
                 <div class="col-xs-12">
                     <button
-                            class="btn btn-primary" @click="submit">Submit!
+                            class="btn btn-primary" @click="submit">Submit
+                    </button>
+                     <button
+                            class="btn btn-success navbar-right" @click="Home">Home
                     </button>
                 </div>
             </div>
+
         </div>
       </div>
             
@@ -49,6 +53,7 @@
         <div class="row" v-if="Datas">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3" style="margin-top:80px">
                 <div class="panel panel-default" >
+                <button class="ctr1 nav-right" @click="show(); Datas=!Datas">Add Action </button>
                     <div class="panel-heading">
                         <h4>Your Action</h4>
                     </div>
@@ -101,6 +106,9 @@
 </template>
 
 <script>    
+
+import {mapGetters} from 'vuex' 
+
     export default {
         data(){
             return{
@@ -144,17 +152,19 @@
                 this.Actiondata.Description = msg
 
             },
-            onDelete(id) {
-                this.$store.state.TaskData = this.$store.state.TaskData.filter(remove =>  remove.ID!= id)
+            Home(){
+                   this.$router.push('/');
             }
         },
 
         computed: {
-            show_value(){
-                return this.$store.getters.getdata;
+            ...mapGetters({
+                show_value : 'getdata'
+            })
+            // show_value(){
+            //     return this.$store.getters.getdata;
             }
-        }
-    }
+ }
 </script>
 
 
@@ -176,7 +186,6 @@ h1 {
     border-radius: 3px;
     width: 100px;
     padding: 10px;
-    box-sizing: border-box;
     color: #539b29;
   }
 
@@ -187,7 +196,6 @@ h1 {
     border-radius: 3px;
     width: 100px;
     padding: 10px;
-    box-sizing: border-box;
     color: #539b29;
   }
 

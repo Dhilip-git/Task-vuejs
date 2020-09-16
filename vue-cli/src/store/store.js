@@ -26,13 +26,23 @@ export const store = new Vuex.Store({
         }); 
       }
     },
-    SaveEmpData : (state,values)=>{
-        state.EmpData.push({
-            emp_store_id: values.emp_save_ID,
-            emp_store_Name: values.emp_save_EmployeeName,
-            emp_store_Age : values.emp_save_Age,
-            emp_store_TaskName: values.emp_save_TaskNames
-        }); 
+    SaveEmpData : (state,value)=>{
+        const record = state.EmpData.find(elements => elements.emp_store_id == value.emp_save_ID);
+            console.log(record)           
+            if(record){
+                console.log(1)
+                record.emp_store_Name = value.emp_save_EmployeeName,
+                record.emp_store_Age = value.emp_save_Age,
+                record.emp_store_TaskName =  value.emp_save_TaskNames
+            }else {
+           console.log(2)     
+            state.EmpData.push({
+            emp_store_id: value.emp_save_ID,
+            emp_store_Name: value.emp_save_EmployeeName,
+            emp_store_Age : value.emp_save_Age,
+            emp_store_TaskName: value.emp_save_TaskNames
+        });
+      } 
     }
    },
 
@@ -42,8 +52,8 @@ export const store = new Vuex.Store({
             //  console.log(values)
         },
 
-        Save_Emp_Data : ({commit},values)=>{
-             commit('SaveEmpData',values)
+        Save_Emp_Data : ({commit},value)=>{
+             commit('SaveEmpData',value)
             //  console.log(values)
 
         }

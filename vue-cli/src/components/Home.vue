@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Welcome to see the employee status</h1>
+    <h1>Welcome to see the employee and Task status</h1>
     <div class="ctr">
       <router-link to="/employee">Employee</router-link>
       <router-link to="/task">Task</router-link>
@@ -27,7 +27,6 @@
     border-radius: 3px;
     width: 100px;
     padding: 10px;
-    box-sizing: border-box;
     color: #539b29;
   }
 
