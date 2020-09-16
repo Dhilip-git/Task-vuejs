@@ -53,7 +53,7 @@
         <div class="row" v-if="Datas">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3" style="margin-top:80px">
                 <div class="panel panel-default" >
-                <button class="ctr1 nav-right" @click="show(); Datas=!Datas">Add Action </button>
+                <button class="ctr1" @click="Home">Home</button>
                     <div class="panel-heading">
                         <h4>Your Action</h4>
                     </div>

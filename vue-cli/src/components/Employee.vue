@@ -9,7 +9,7 @@
     <div class="container" v-if="switched">
         <div>
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <h1>Enter Employee Details</h1>
                     <hr>
                     <div class="form-group">
@@ -58,7 +58,7 @@
         <div class="row" v-if="Datas">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3" style="margin-top:80px">
                 <div class="panel panel-default" >
-                <button class="ctr1" @click="show(); Datas=!Datas" style="width:115px">Add Employee </button>
+                <button class="ctr1" @click="Home1">Home</button>
                     <div class="panel-heading">
                         <h4>Employee Details</h4>
                     </div>
