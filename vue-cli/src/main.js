@@ -5,6 +5,10 @@ import { routes } from './route';
 
 import { store } from './store/store'
 
+import UUID from 'vue-uuid'  
+  
+Vue.use(UUID); 
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({

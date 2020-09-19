@@ -1,12 +1,32 @@
 <template>
-  <div>
-    <h1>Welcome to see the employee and Task status</h1>
-    <div class="ctr">
-      <router-link to="/employee">Employee</router-link>
-      <router-link to="/task">Task</router-link>
+<div>
+  <nav class="navbar navbar-default">
+    <div class="ctr navbar-right">
+      <router-link to="/" style="width:110px">Home</router-link>
+      <router-link to="/employee" style="width:110px">Employee ({{ emp_value.length }})</router-link>
+      <router-link to="/task">Task ({{ show_value.length }})</router-link>
     </div>
-  </div>
+  </nav> 
+ </div>  
 </template>
+
+<script>
+
+import {mapGetters} from 'vuex'
+
+export default {
+  
+ computed: {
+
+            ...mapGetters({
+                 emp_value : 'empdata',
+                 show_value : 'getdata'
+            })
+
+
+ }
+}
+</script>
 
 <style scoped>
 
